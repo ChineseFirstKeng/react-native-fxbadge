@@ -1,0 +1,48 @@
+{
+  "name": "react-native-fxbadge",
+  "version": "1.0.0",
+  "description": "A flexible badge component for React Native, similar to fxdialog, supporting dot, text, and custom styles with animation effects.",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc --project tsconfig.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChineseFirstKeng/react-native-fxbadge.git"
+  },
+  "author": "ChineseFirstKeng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChineseFirstKeng/react-native-fxbadge/issues"
+  },
+  "homepage": "https://github.com/ChineseFirstKeng/react-native-fxbadge#readme",
+  "keywords": [
+    "react-native",
+    "badge",
+    "fxbadge",
+    "fxview",
+    "notification",
+    "indicator"
+  ],
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-native": ">=0.60.0",
+    "react-native-fxview": "^1.0.4"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-native": "^0.72.0",
+    "typescript": "^5.0.0",
+    "react-native-fxview": "^1.0.4"
+  },
+   "files": [
+    "*.{js,ts,d.ts,d.ts.map}",
+    "animation/**/*.{js,ts,d.ts,d.ts.map}",
+    "README.md",
+    "LICENSE",
+    "tsconfig.json"
+  ]
+}
