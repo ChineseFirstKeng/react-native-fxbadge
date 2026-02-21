@@ -121,7 +121,7 @@ export default class FXBadgeView extends Component<FXBadgeViewProps, FXBadgeView
     const baseStyle: ViewStyle = {
       position: "absolute",
     };
-    const lastOffsetValue = {
+    const totalOffsetValue = {
       x: offset.x + ratioOffset.x * width,
       y: offset.y + ratioOffset.y * height,
     } as { x: number; y: number };
@@ -130,40 +130,40 @@ export default class FXBadgeView extends Component<FXBadgeViewProps, FXBadgeView
       case FXBadgePosition.TopRight:
         return {
           ...baseStyle,
-          top: lastOffsetValue.y - height * 0.5,
-          right: lastOffsetValue.x - width * 0.5,
+          top: - height * 0.5 + totalOffsetValue.y,
+          right: - width * 0.5 - totalOffsetValue.x,
         };
       case FXBadgePosition.TopLeft:
         return {
           ...baseStyle,
-          top: lastOffsetValue.y - height * 0.5,
-          left: lastOffsetValue.x - width * 0.5,
+          top: - height * 0.5 + totalOffsetValue.y,
+          left: - width * 0.5 + totalOffsetValue.x,
         };
       case FXBadgePosition.BottomRight:
         return {
           ...baseStyle,
-          bottom: lastOffsetValue.y - height * 0.5,
-          right: lastOffsetValue.x - width * 0.5,
+          bottom: - height * 0.5 - totalOffsetValue.y,
+          right: - width * 0.5 - totalOffsetValue.x,
         };
       case FXBadgePosition.BottomLeft:
         return {
           ...baseStyle,
-          bottom: lastOffsetValue.y - height * 0.5,
-          left: lastOffsetValue.x - width * 0.5,
+          bottom: - height * 0.5 - totalOffsetValue.y,
+          left: - width * 0.5 + totalOffsetValue.x,
         };
       case FXBadgePosition.Center:
         return {
           ...baseStyle,
           marginTop: "50%",
           marginLeft: "50%",
-          top: lastOffsetValue.y - height * 0.5,
-          left: lastOffsetValue.x - width * 0.5,
+          top: - height * 0.5 + totalOffsetValue.y,
+          left: - width * 0.5 + totalOffsetValue.x,
         };
       default:
         return {
           ...baseStyle,
-          top: lastOffsetValue.y - height * 0.5,
-          right: lastOffsetValue.x - width * 0.5,
+          top: - height * 0.5 + totalOffsetValue.y,
+          right: - width * 0.5 - totalOffsetValue.x,
         };
     }
   };

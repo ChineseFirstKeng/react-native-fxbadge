@@ -1,14 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FXBadgeCloseSystemType = exports.FXBadgeFXViewCategory = exports.FXBadgePosition = exports.FXBadgeType = void 0;
-// 徽章类型
+/**
+ * 徽章类型
+ */
 var FXBadgeType;
 (function (FXBadgeType) {
     FXBadgeType["Dot"] = "dot";
     FXBadgeType["Text"] = "text";
-    FXBadgeType["Custom"] = "custom"; // 自定义
+    FXBadgeType["Custom"] = "custom"; // 自定义类型
 })(FXBadgeType || (exports.FXBadgeType = FXBadgeType = {}));
-// 徽章位置
+/**
+ * 徽章位置
+ */
 var FXBadgePosition;
 (function (FXBadgePosition) {
     FXBadgePosition["TopRight"] = "topRight";
@@ -17,9 +21,15 @@ var FXBadgePosition;
     FXBadgePosition["BottomLeft"] = "bottomLeft";
     FXBadgePosition["Center"] = "center"; // 中心
 })(FXBadgePosition || (exports.FXBadgePosition = FXBadgePosition = {}));
+/**
+ * FXView 分类
+ */
 exports.FXBadgeFXViewCategory = "FXBadge";
+/**
+ * 系统预定义的徽章关闭类型
+ */
 var FXBadgeCloseSystemType;
 (function (FXBadgeCloseSystemType) {
+    FXBadgeCloseSystemType["Badge"] = "badge";
     FXBadgeCloseSystemType["Custom"] = "custom";
-    FXBadgeCloseSystemType["Auto"] = "auto";
 })(FXBadgeCloseSystemType || (exports.FXBadgeCloseSystemType = FXBadgeCloseSystemType = {}));

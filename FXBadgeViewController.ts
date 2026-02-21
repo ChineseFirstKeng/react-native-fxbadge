@@ -41,11 +41,17 @@ export class FXBadgeViewController {
       
       // 显示徽章
       showItem.controller?.show();
+
+      const animationPromise =
+      showItem.animationController?.show() || Promise.resolve();
       
       // 执行显示动画
-      showItem.animationController?.show().then(() => {
+      animationPromise.then(() => {
         logger.info("[FXBadgeViewController] Badge shown successfully");
-        // 调用 didShow 回调
+      }).catch((error) => {
+        logger.error("[FXBadgeViewController] Failed to show badge animation", error);
+      }).finally(() => {
+         // 调用 didShow 回调
         showItem.didShow?.();
       });
       
@@ -85,7 +91,7 @@ export class FXBadgeViewController {
     try {
       // 倒序遍历，避免删除元素时影响索引
       for (let i = this.activeBadges.length - 1; i >= 0; i--) {
-        this.closeItem(this.activeBadges[i]);
+        this.closeItem(this.activeBadges[i], "clear");
       }
       
       // 清空数组

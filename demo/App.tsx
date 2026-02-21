@@ -34,7 +34,7 @@ export default function App() {
   // 显示文本徽章
   const showTextBadge = () => {
     FXBadge.text().show({
-      text: "99+",
+      text: "1",
       containerStyle: {
         backgroundColor: "#FF3B30",
         paddingHorizontal: 8,
@@ -61,13 +61,11 @@ export default function App() {
         <View
           style={{
             backgroundColor: "#FF3B30",
-            width: 24,
             height: 24,
             borderRadius: 12,
             justifyContent: "center",
             alignItems: "center",
-            marginRight: 4,
-            marginTop: 4,
+            paddingHorizontal: 8,
           }}
         >
           <Text
@@ -77,7 +75,7 @@ export default function App() {
               fontWeight: "bold",
             }}
           >
-            3
+            我草了个dj
           </Text>
         </View>
       ),
@@ -212,7 +210,7 @@ export default function App() {
         color: "#34C759",
         size: 12,
         position: FXBadgePosition.TopRight,
-        offset: { x: 20, y: 20 }, // 直接偏移
+        offset: { x: 0, y: 12 }, // 直接偏移
       },
       fxViewId,
     );
@@ -290,7 +288,7 @@ export default function App() {
 
   // 关闭所有徽章
   const hideAllBadges = () => {
-    FXBadge.hideAll(fxViewId);
+    FXBadge.clearAll(fxViewId);
     console.log("所有徽章已关闭");
   };
 

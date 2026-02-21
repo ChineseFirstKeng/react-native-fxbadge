@@ -10,6 +10,7 @@ import {
   FXBadgeTextConfiguration,
   FXBadgeDotConfiguration,
   FXBadgeCustomConfiguration,
+  FXBadgeCloseSystemType,
 } from "./types";
 import FXBadgeManager from "./FXBadgeManager";
 
@@ -78,7 +79,7 @@ class FXBadgeTypeBuilder<T extends FXBadgeConfiguration> {
       // 返回徽章控制器
       return {
         close: (closeType?: FXBadgeCloseType) => this.close(closeType),
-        fxViewId: () => showItem.fxViewId,
+        fxViewId: () => this.showItem?.fxViewId || "",
       };
     } catch (error) {
       logger.error("[FXBadge] Failed to show badge", error);
@@ -172,15 +173,31 @@ export default class FXBadge {
   }
 
   /**
+   * 静态函数关闭徽章，关闭的是最近展示出来的那个。触发关闭徽章，并不是关闭完成。转发给 FXBadgeManager
+   * @param fxViewId 可选，指定要关闭的徽章的 fxViewId
+   */
+  static close(fxViewId?: string, closeType?: FXBadgeCloseType) {
+    try {
+      logger.log("[FXBadge] static close", fxViewId);
+      FXBadgeManager.getInstance().close(
+        fxViewId,
+        closeType || FXBadgeCloseSystemType.Custom,
+      );
+    } catch (error) {
+      logger.error("[FXBadge] Failed to close badge", error);
+    }
+  }
+
+  /**
    * 关闭所有徽章
    * @param fxViewId 指定要关闭的徽章的 fxViewId
    */
-  static hideAll(fxViewId: string): void {
+  static clearAll(fxViewId: string): void {
     try {
-      logger.log("FXBadge hideAll", fxViewId);
+      logger.log("[FXBadge] clearAll", fxViewId);
       FXBadgeManager.getInstance().clearViewController(fxViewId);
     } catch (error) {
-      logger.error("[FXBadge] Failed to hide badges", error);
+      logger.error("[FXBadge] Failed to clear badges", error);
     }
   }
 }
