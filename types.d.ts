@@ -25,6 +25,11 @@ export declare enum FXBadgePosition {
  */
 export declare const FXBadgeFXViewCategory = "FXBadge";
 /**
+ * Badge 的最大行数，用于实现"无限行"的文本显示
+ * 设置为一个足够大的数值以避免文本被截断
+ */
+export declare const FXBadgeMaxNumberOfLines = 99999;
+/**
  * 徽章关闭类型
  * 可以是系统预定义的关闭类型，也可以是自定义的字符串
  */
@@ -116,6 +121,16 @@ export interface FXBadgeTextConfiguration extends FXBadgeBaseConfiguration {
      * 必需项
      */
     text: string;
+    /**
+     * 最大显示行数
+     * @default FXBadgeMaxNumberOfLines
+     */
+    numberOfLines?: number;
+    /**
+     * 文本溢出时的省略模式
+     * @default "tail"
+     */
+    ellipsizeMode?: "head" | "middle" | "tail" | "clip";
     /**
      * 文本样式
      */

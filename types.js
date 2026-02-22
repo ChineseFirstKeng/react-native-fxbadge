@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.FXBadgeCloseSystemType = exports.FXBadgeFXViewCategory = exports.FXBadgePosition = exports.FXBadgeType = void 0;
+exports.FXBadgeCloseSystemType = exports.FXBadgeMaxNumberOfLines = exports.FXBadgeFXViewCategory = exports.FXBadgePosition = exports.FXBadgeType = void 0;
 /**
  * 徽章类型
  */
@@ -25,6 +25,11 @@ var FXBadgePosition;
  * FXView 分类
  */
 exports.FXBadgeFXViewCategory = "FXBadge";
+/**
+ * Badge 的最大行数，用于实现"无限行"的文本显示
+ * 设置为一个足够大的数值以避免文本被截断
+ */
+exports.FXBadgeMaxNumberOfLines = 99999;
 /**
  * 系统预定义的徽章关闭类型
  */

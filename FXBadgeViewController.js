@@ -86,7 +86,7 @@ class FXBadgeViewController {
         try {
             // 倒序遍历，避免删除元素时影响索引
             for (let i = this.activeBadges.length - 1; i >= 0; i--) {
-                this.closeItem(this.activeBadges[i]);
+                this.closeItem(this.activeBadges[i], "clear");
             }
             // 清空数组
             this.activeBadges = [];

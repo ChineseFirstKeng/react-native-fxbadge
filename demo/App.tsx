@@ -144,15 +144,16 @@ export default function App() {
   // 显示带自定义动画的徽章
   const showCustomAnimationBadge = () => {
     const customAnimation = new CustomAnimation();
-
     FXBadge.text().show(
       {
-        text: "New",
+        text: "NewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNewNew",
         containerStyle: {
           backgroundColor: "#FF9500",
           paddingHorizontal: 10,
           paddingVertical: 4,
           borderRadius: 12,
+          width: 300,
+          maxHeight: 300,
         },
         textStyle: {
           color: "#FFFFFF",
@@ -160,6 +161,8 @@ export default function App() {
           fontWeight: "bold",
         },
         position: FXBadgePosition.TopLeft,
+        ellipsizeMode: "tail",
+        numberOfLines: 10,
         animationController: customAnimation,
         didShow: () => console.log("带自定义动画的徽章显示了"),
         didClose: () => console.log("带自定义动画的徽章关闭了"),
@@ -231,7 +234,7 @@ export default function App() {
 
   // 显示中心位置的徽章
   const showCenterBadge = () => {
-    FXBadge.text().show(
+    const ctrl = FXBadge.text().show(
       {
         text: "Center",
         containerStyle: {
@@ -249,6 +252,10 @@ export default function App() {
       },
       fxViewId,
     );
+
+    setTimeout(() => {
+      ctrl?.close();
+    }, 3000);
   };
 
   // 显示自定义样式的自定义徽章
@@ -284,6 +291,10 @@ export default function App() {
       },
       fxViewId,
     );
+
+    setTimeout(() => {
+      FXBadge.close();
+    }, 3000);
   };
 
   // 关闭所有徽章
@@ -389,6 +400,8 @@ const styles = StyleSheet.create({
   badgeContainer: {
     width: 200,
     height: 200,
+    marginTop: 100,
+    marginLeft: 50,
     backgroundColor: "#f0f0f0",
     borderRadius: 10,
     alignItems: "center",

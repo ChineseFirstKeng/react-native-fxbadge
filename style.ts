@@ -14,6 +14,8 @@ export const styles = {
       minWidth: 20,
       alignItems: 'center',
       justifyContent: 'center',
+      width: "100%",
+      height: "100%",
     } as ViewStyle,
     text: {
       color: '#FFFFFF',

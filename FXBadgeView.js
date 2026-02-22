@@ -66,9 +66,11 @@ class FXBadgeView extends react_1.Component {
         };
         // 渲染文本徽章
         this.renderText = () => {
-            const { text, textStyle, containerStyle } = this.props;
+            const { text, textStyle, containerStyle, numberOfLines = types_1.FXBadgeMaxNumberOfLines, ellipsizeMode = "tail" } = this.props;
             return (<react_native_1.View style={[style_1.styles.text.container, containerStyle]}>
-        <react_native_1.Text style={[style_1.styles.text.text, textStyle]}>{text}</react_native_1.Text>
+        <react_native_1.Text style={[style_1.styles.text.text, textStyle]} numberOfLines={numberOfLines} ellipsizeMode={ellipsizeMode}>
+          {text}
+        </react_native_1.Text>
       </react_native_1.View>);
         };
         // 渲染自定义徽章
@@ -174,12 +176,13 @@ class FXBadgeView extends react_1.Component {
         const animationStyle = (_b = (_a = this.animation) === null || _a === void 0 ? void 0 : _a.getStyle) === null || _b === void 0 ? void 0 : _b.call(_a);
         react_native_fxview_1.logger.info("[FXBadgeView] render", hasMeasured);
         // 测量层只用布局样式，不加动画
-        const measureLayer = !hasMeasured && (<react_native_1.View style={{
+        const measureLayer = !hasMeasured && (<react_native_1.Animated.View style={{
                 ...badgePositionStyle, // 只加定位相关
+                ...animationStyle, // 只加动画样式
                 opacity: 0,
             }} onLayout={this.handleLayout}>
         {this.renderBadgeContainer(this.renderBadgeContent())}
-      </react_native_1.View>);
+      </react_native_1.Animated.View>);
         // 展示层外层负责定位，内层负责动画
         const displayLayer = hasMeasured && (<react_native_1.Animated.View style={[badgePositionStyle, animationStyle]}>
         {this.renderBadgeContainer(this.renderBadgeContent())}

@@ -2,6 +2,10 @@
 
 一个灵活的React Native徽章组件，类似于fxdialog，支持圆点、文本和自定义样式，带有动画效果。
 
+## 📹 演示效果
+
+![badge功能演示](https://github.com/ChineseFirstKeng/files/blob/main/Simulator%20Screen%20Recording%20-%20iPhone%2016%20Pro%20-%202026-02-22%20at%2011.17.46.gif?raw=true)
+
 ## 安装
 
 ```bash

@@ -15,6 +15,8 @@ exports.styles = {
             minWidth: 20,
             alignItems: 'center',
             justifyContent: 'center',
+            width: "100%",
+            height: "100%",
         },
         text: {
             color: '#FFFFFF',

@@ -15,6 +15,7 @@ import {
   FXBadgeTextConfiguration,
   FXBadgeCustomConfiguration,
   FXBadgeCloseSystemType,
+  FXBadgeMaxNumberOfLines,
 } from "./types";
 import { FXBadgeAnimationImpl } from "./animation/FXBadgeAnimationImpl";
 import { logger } from "react-native-fxview";
@@ -68,13 +69,19 @@ export default class FXBadgeView extends Component<FXBadgeViewProps, FXBadgeView
 
   // 渲染文本徽章
   renderText = () => {
-    const { text, textStyle, containerStyle } = this.props as unknown as Omit<
+    const { text, textStyle, containerStyle, numberOfLines = FXBadgeMaxNumberOfLines, ellipsizeMode = "tail" } = this.props as unknown as Omit<
       FXBadgeTextConfiguration,
       "didShow" | "didClose"
     >;
     return (
       <View style={[styles.text.container, containerStyle]}>
-        <Text style={[styles.text.text, textStyle]}>{text}</Text>
+        <Text
+          style={[styles.text.text, textStyle]}
+          numberOfLines={numberOfLines}
+          ellipsizeMode={ellipsizeMode}
+        >
+          {text}
+        </Text>
       </View>
     );
   };
@@ -194,15 +201,16 @@ export default class FXBadgeView extends Component<FXBadgeViewProps, FXBadgeView
 
     // 测量层只用布局样式，不加动画
     const measureLayer = !hasMeasured && (
-      <View
+      <Animated.View
         style={{
           ...badgePositionStyle, // 只加定位相关
+          ...animationStyle, // 只加动画样式
           opacity: 0,
         }}
         onLayout={this.handleLayout}
       >
         {this.renderBadgeContainer(this.renderBadgeContent())}
-      </View>
+      </Animated.View>
     );
 
     // 展示层外层负责定位，内层负责动画
